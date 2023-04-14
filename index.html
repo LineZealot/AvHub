@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Forms</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <form class="service-request-body column">
+        <div class="page-head column">
+            <img class="logo" src="logo.png" alt="Burrows Aviation logo">
+            <h1 class="heading-title">Service Request</h1>
+        </div>
+
+        <div class="form-input-area">
+            <!-- Arrival Detail Form -->
+            <fieldset class="arrival-details">
+                <div class="aircraft-details column">
+                    <label for="tail_number">Aircraft Tail Number:</label>
+                    <input type="text" id="tail_number" placeholder="Tail #" name="tail_number">
+                    <label for="aircraft-type">Aircraft Type:</label>
+                    <input type="text" id="aircraft-type" placeholder="AC type" name="aircraft-type">
+                </div>
+                <div class="arrival-dateAndTime column">
+                    <label for="date">Date:</label>
+                    <input type="text" id="date" placeholder="..." name="date">
+                    <label for="time">Time:</label>
+                    <input type="text" placeholder="..." name="time">
+                </div>
+            </fieldset>
+
+            <!-- Departure Date and Towing info -->
+            <fieldset class="column">
+                <label for="departure-date">Departure Date:</label>
+                <input type="text" id="departure-date" placeholder="_/_/_" name="departure-date">
+                <label for="departure-time">Departure Time:</label>
+                <input type="text" id="departure-time" placeholder="_:_" name="departure-time">
+                <div class="question-container" id="brakes-off">
+                    <p class="question">Are the aircraft brakes off?</p>
+                    <div class="switch" id="brakes-off-switch">
+                        <input type="radio" id="brakes-off-yes" class="switch-yn" name="brakes-off-switch" value="yes">
+                        <label for="brakes-off-yes">Yes</label>
+                        <input type="radio" id="brakes-off-no" class="switch-yn" name="brakes-off-switch" value="no">
+                        <label for="brakes-off-no">No</label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Fuel Request Menu -->
+            <fieldset class="column" id="fuel-info">
+                <div class="question-container">
+                    <p class="question">Are you taking fuel?</p>
+                    <div class="switch" id="fuel-request-switch">
+                        <input type="radio" name="fuel-request-yesno" value="yes" id="fuel-request-yes" class="switch-yn" onclick="toggleFuelRequestMenu()">
+                        <label for="fuel-request-yes">Yes</label>
+                        <input type="radio" name="fuel-request-yesno" value="no" id="fuel-request-no" class="switch-yn" onclick="toggleFuelRequestMenu()">
+                        <label for="fuel-request-no">No</label>
+                    </div>
+                </div>
+                <div class="question-container" id="fuel-type-menu" style="display: none">
+                    <p class="question"> Select Fuel Type:</p>
+                    <div class="switch" id="fuel-type-switch">
+                        <input type="radio" id="fuel-type-avgas" name="fuel-type" value="100LL" class="switch-ft" onclick="toggleOverWingQuestion()">
+                        <label for="fuel-type-avgas">100LL</label>
+                        <input type="radio" id="fuel-type-jet" name="fuel-type" value="JetA" class="switch-ft" onclick="toggleOverWingQuestion()">
+                        <label for="fuel-type-jet">JET A</label>
+                    </div>
+                </div>
+                <div class="question-container" id="overwing-fueling-question" style="display: none">
+                    <p class="question">Is this an over-the-wing fueling?</p>
+                    <div class="switch" id="overwing-switch">
+                        <input type="radio" id="overwing-yes" name="overwing-fueling" value="yes" class="switch-yn">
+                        <label for="overwing-yes">Yes</label>
+                        <input type="radio" id="overwing-no" name="overwing-fueling" value="no" class="switch-yn">
+                        <label for="overwing-no">No</label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Additional Services Menu -->
+            <fieldset class="additional-services-box column">Additional Services:
+                <div class="additional-services-checks column">
+                    <div>
+                        <input type="checkbox" id="tie-down" name="tie-down">
+                        <label for="tie-down">Tie Down</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="catering" name="catering">
+                        <label for="catering">Catering</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="dishes" name="dishes">
+                        <label for="dishes">Dishes</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="gpu" name="gpu">
+                        <label for="gpu">GPU</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="windshield" name="windshield">
+                        <label for="windshield">Windshield Wash</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="coffee" name="coffee">
+                        <label for="coffee">Coffee</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="ice" name="ice">
+                        <label for="ice">Ice</label>
+                    </div>
+                </div>
+                <label for="custom-services">Other:</label>
+                <textarea rows="3" id="custom-services" name="custom-services"></textarea>
+            </fieldset>
+
+            <!-- Customer Information Form -->
+            <fieldset class="customer-information column">
+                <div class="crew-detail">
+                    <label for="crew-name">Crew Name:</label>
+                    <input type="text" id="crew-name" placeholder="Enter name here" name="crew-name">
+                </div>
+                <div class="crew-detail">
+                    <label for="crew-phone">Crew Phone #:</label>
+                    <input type="text" id="crew-phone" placeholder="Enter phone # here" name="crew-phone">
+                </div>
+                <div class="crew-detail">
+                    <label for="crew-email">Email Address:</label>
+                    <input type="text" id="crew-email" placeholder="Enter email address" name="crew-email">
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="submission">
+            <button type="submit" class="submit-service-request">Submit</button>
+        </div>
+    </form>
+</body>
+</html>
